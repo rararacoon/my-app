@@ -1,0 +1,8 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm list *)",
+      "Bash(node -e \"const next = require\\('next/package.json'\\); console.log\\('Next.js version:', next.version\\)\")"
+    ]
+  }
+}
