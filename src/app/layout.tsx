@@ -3,6 +3,8 @@ import { Geist, Geist_Mono } from 'next/font/google'
 import { ThemeProvider } from '@/components/layout/theme-provider'
 import { Header } from '@/components/layout/header'
 import { Footer } from '@/components/layout/footer'
+import { TooltipProvider } from '@/components/ui/tooltip'
+import { Toaster } from '@/components/ui/sonner'
 import './globals.css'
 
 const geistSans = Geist({
@@ -41,11 +43,14 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <Header />
-          <main className="mx-auto w-full max-w-5xl flex-1 px-6 py-10">
-            {children}
-          </main>
-          <Footer />
+          <TooltipProvider>
+            <Header />
+            <main className="mx-auto w-full max-w-5xl flex-1 px-6 py-10">
+              {children}
+            </main>
+            <Footer />
+            <Toaster richColors position="bottom-right" />
+          </TooltipProvider>
         </ThemeProvider>
       </body>
     </html>

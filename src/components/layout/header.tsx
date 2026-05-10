@@ -1,8 +1,9 @@
 import Link from 'next/link'
 import { ThemeToggle } from './theme-toggle'
+import { MobileNav } from './mobile-nav'
 import { Separator } from '@/components/ui/separator'
 
-const navLinks = [
+export const navLinks = [
   { href: '/', label: '홈' },
   { href: '/about', label: '소개' },
 ]
@@ -14,18 +15,21 @@ export function Header() {
         <Link href="/" className="text-sm font-semibold tracking-tight">
           my-app
         </Link>
-        <nav className="flex items-center gap-1">
-          {navLinks.map((link) => (
-            <Link
-              key={link.href}
-              href={link.href}
-              className="rounded-md px-3 py-1.5 text-sm text-muted-foreground transition-colors hover:text-foreground"
-            >
-              {link.label}
-            </Link>
-          ))}
+        <div className="flex items-center gap-1">
+          <nav className="hidden items-center gap-1 md:flex">
+            {navLinks.map((link) => (
+              <Link
+                key={link.href}
+                href={link.href}
+                className="rounded-md px-3 py-1.5 text-sm text-muted-foreground transition-colors hover:text-foreground"
+              >
+                {link.label}
+              </Link>
+            ))}
+          </nav>
           <ThemeToggle />
-        </nav>
+          <MobileNav links={navLinks} />
+        </div>
       </div>
       <Separator />
     </header>
